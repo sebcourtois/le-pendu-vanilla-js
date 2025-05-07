@@ -1,5 +1,74 @@
+/*div {*/
+/*    border: lightgrey dotted 1px;*/
+/*}*/
 
 main {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-board {
     border: #974627 solid 2px;
     border-radius: 20px;
+    padding: 20px;
+    margin: 50px;
+}
+
+#main-board-top {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#img_du_pendu {
+    width: calc(724px * 0.5);
+    height: calc(709px * 0.5);
+}
+
+#keyboard {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-key {
+    width: 20px;
+    height: 26px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #ce9f6b;
+    border: #974627 solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    font-weight: bold;
+    font-family: "Arial", serif;
+}
+
+.letter-key:hover {
+    background-color: #974627;
+}
+
+
+#secret_word {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    font-family: "Arial", serif;
+    font-size: xxx-large;
+    letter-spacing: 8px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    /*border: lightgrey dotted 1px;*/
 }
