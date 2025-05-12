@@ -1,13 +1,12 @@
-/*div {*/
-/*    border: lightgrey dotted 1px;*/
-/*}*/
+div {
+    border: lightgrey dotted 1px;
+}
 
 /** {box-sizing: border-box}*/
 body {
     max-width: 1024px;
     margin-inline: auto;
-    padding:0;
-
+    padding: 0;
 }
 
 img {
@@ -19,7 +18,8 @@ img {
     border: #974627 solid 2px;
     border-radius: 20px;
     padding: 20px;
-    margin: 40px;
+    margin-block: 40px;
+    margin-inline: 10px;
 }
 
 #main-board-top {
@@ -28,7 +28,7 @@ img {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #img_du_pendu {
@@ -72,9 +72,9 @@ img {
     flex-grow: 1;
     flex-shrink: 0;
     font-family: "Arial", serif;
-    font-size: xxx-large;
+    font-size: 24px;
     letter-spacing: 8px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 5px;
     /*border: lightgrey dotted 1px;*/
 }
