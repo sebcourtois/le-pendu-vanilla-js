@@ -1,6 +1,6 @@
-div {
-    border: lightgrey dotted 1px;
-}
+/*div {*/
+/*    border: lightgrey dotted 1px;*/
+/*}*/
 
 /** {box-sizing: border-box}*/
 body {
@@ -62,6 +62,12 @@ img {
     background-color: #974627;
 }
 
+.letter-key[data-disabled="true"] {
+    background-color: #974627;
+    color: #ce9f6b;
+}
+
+
 
 #secret_word {
     display: flex;
@@ -72,7 +78,7 @@ img {
     flex-grow: 1;
     flex-shrink: 0;
     font-family: "Arial", serif;
-    font-size: 24px;
+    font-size: 26px;
     letter-spacing: 8px;
     margin-top: 20px;
     margin-bottom: 5px;
