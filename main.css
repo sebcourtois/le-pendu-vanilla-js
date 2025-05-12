@@ -2,11 +2,11 @@
 /*    border: lightgrey dotted 1px;*/
 /*}*/
 
-main {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
+/** {box-sizing: border-box}*/
+
+img {
+    width: 100%;
+    height: auto;
 }
 
 #main-board {
@@ -20,14 +20,14 @@ main {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    /*justify-content: center;*/
+    justify-content: center;
     align-items: center;
     margin-bottom: 40px;
 }
 
 #img_du_pendu {
-    width: calc(724px * 0.5);
-    height: calc(709px * 0.5);
+    max-width: calc(724px * 0.5);
+    height: auto;
 }
 
 #keyboard {
