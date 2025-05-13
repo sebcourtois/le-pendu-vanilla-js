@@ -80,9 +80,11 @@ img {
     flex-grow: 1;
     flex-shrink: 0;
     font-family: "Arial", serif;
-    font-size: 26px;
+    font-size: 30px;
     letter-spacing: 8px;
     margin-top: 20px;
     margin-bottom: 5px;
+    text-align: center;
+    width: fit-content;
     /*border: lightgrey dotted 1px;*/
 }

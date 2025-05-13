@@ -21,12 +21,12 @@ function replaceDiacritics(word) {
 }
 
 function pickWord() {
-    return replaceDiacritics(words[randomIndex(words.length)])
+    return words[randomIndex(words.length)]
 }
 
-const some_word = pickWord().toUpperCase()
+const someWord = replaceDiacritics(pickWord()).toUpperCase()
 const secretWordElem = document.querySelector("#secret_word")
-secretWordElem.textContent = some_word.replace(/\w/g, "_")
+secretWordElem.textContent = someWord.replace(/\w/g, "_")
 
 let missCount = 0
 let gameOver = false
@@ -35,7 +35,7 @@ const usedLetters = []
 
 function revealLetter(letter) {
     const hidden_letters = Array.from(secretWordElem.textContent)
-    for (let [i, l] of Array.from(some_word).entries()) {
+    for (let [i, l] of Array.from(someWord).entries()) {
         if (l === letter) hidden_letters[i] = letter
     }
     secretWordElem.textContent = hidden_letters.join("")
@@ -55,25 +55,25 @@ function onLetterClicked(event) {
     }
     disableLetterKey(event.target)
 
-    if (some_word.indexOf(letter) < 0) {
+    if (someWord.indexOf(letter) < 0) {
         console.log(`Pas de lettre ${letter}`)
         missCount += 1
         penduImgElem.src = `images/${missCount}.png`
         if (missCount >= 9) {
             gameOver = true
-            secretWordElem.textContent = some_word
+            secretWordElem.textContent = someWord
             secretWordElem.style.color = "red"
-            secretWordElem.textContent = "🙈🙅 " + secretWordElem.textContent + " 🤦👎"
+            secretWordElem.innerHTML = "🙈🙅<br>" + secretWordElem.textContent + "<br>🤦👎"
         }
         return
     }
 
     console.log(letter)
     revealLetter(letter)
-    if (secretWordElem.textContent === some_word) {
+    if (secretWordElem.textContent === someWord) {
         gameOver = true
         secretWordElem.style.color = "yellowgreen"
-        secretWordElem.textContent = "👏✌ " + secretWordElem.textContent + " 👍👏"
+        secretWordElem.innerHTML = "👏✌<br>" + secretWordElem.textContent + "<br>👍👏"
         penduImgElem.src = "images/win.png"
     }
 }
