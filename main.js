@@ -26,7 +26,7 @@ function pickWord() {
 
 const some_word = pickWord().toUpperCase()
 const secretWordElem = document.querySelector("#secret_word")
-secretWordElem.textContent = Array(some_word.length).fill("_").join("")
+secretWordElem.textContent = some_word.replace(/\w/g, "_")
 
 let missCount = 0
 let gameOver = false
