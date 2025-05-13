@@ -1,12 +1,7 @@
+import { words } from "./dico.js";
+
 function makeLetterKeyElement(letter) {
     const html = `<p class="letter-key">${letter}</p>`
-    const template = document.createElement("template")
-    template.innerHTML = html
-    return template.content.firstElementChild
-}
-
-function makeSecretLetterElement(letter) {
-    const html = `<p class="secret-letter">${letter}</p>`
     const template = document.createElement("template")
     template.innerHTML = html
     return template.content.firstElementChild
@@ -17,14 +12,25 @@ for (let letter of "abcdefghijklmnopqrstuvwxyz".toUpperCase()) {
     keyboardElem.appendChild(makeLetterKeyElement(letter))
 }
 
-const some_word = "secret".toUpperCase()
+function randomIndex(maxIndex) {
+    return Math.floor(Math.random() * maxIndex)
+}
 
+function replaceDiacritics(word) {
+    return word.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+}
+
+function pickWord() {
+    return replaceDiacritics(words[randomIndex(words.length)])
+}
+
+const some_word = pickWord().toUpperCase()
 const secretWordElem = document.querySelector("#secret_word")
 secretWordElem.textContent = Array(some_word.length).fill("_").join("")
 
 let missCount = 0
 let gameOver = false
-const penduImg = document.querySelector("#img_du_pendu")
+const penduImgElem = document.querySelector("#img_du_pendu")
 const usedLetters = []
 
 function revealLetter(letter) {
@@ -52,7 +58,7 @@ function onLetterClicked(event) {
     if (some_word.indexOf(letter) < 0) {
         console.log(`Pas de lettre ${letter}`)
         missCount += 1
-        penduImg.src = `images/${missCount}.png`
+        penduImgElem.src = `images/${missCount}.png`
         if (missCount >= 9) {
             gameOver = true
             secretWordElem.textContent = some_word
@@ -68,7 +74,7 @@ function onLetterClicked(event) {
         gameOver = true
         secretWordElem.style.color = "yellowgreen"
         secretWordElem.textContent = "👏✌ " + secretWordElem.textContent + " 👍👏"
-        penduImg.src = "images/win.png"
+        penduImgElem.src = "images/win.png"
     }
 }
 
