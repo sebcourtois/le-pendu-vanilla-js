@@ -3,6 +3,7 @@
 /*}*/
 
 /** {box-sizing: border-box}*/
+
 body {
     max-width: 1024px;
     margin-inline: auto;
@@ -56,6 +57,8 @@ img {
     margin: 5px;
     font-weight: bold;
     font-family: "Arial", serif;
+    /*box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);*/
+
 }
 
 .letter-key:hover {
@@ -63,11 +66,10 @@ img {
 }
 
 .letter-key[data-disabled="true"] {
-    background-color: #974627;
-    color: #ce9f6b;
+    background-color: #967d71;
+    color: #b39f8f;
+    border: #968178 solid 2px;
 }
-
-
 
 #secret_word {
     display: flex;

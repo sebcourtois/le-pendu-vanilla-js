@@ -23,6 +23,7 @@ const secretWordElem = document.querySelector("#secret_word")
 secretWordElem.textContent = Array(some_word.length).fill("_").join("")
 
 let missCount = 0
+let gameOver = false
 const penduImg = document.querySelector("#img_du_pendu")
 const usedLetters = []
 
@@ -40,12 +41,8 @@ function disableLetterKey(letterKeyElem) {
 }
 
 function onLetterClicked(event) {
-    if (missCount >= 9) {
-        secretWordElem.textContent = some_word
-        secretWordElem.style.color = "red"
-        secretWordElem.textContent = "🙈🙅 " + secretWordElem.textContent + " 🤦👎"
-        return
-    }
+    if (gameOver) return
+
     const letter = event.target.textContent
     if (usedLetters.includes(letter)) {
         return
@@ -56,15 +53,23 @@ function onLetterClicked(event) {
         console.log(`Pas de lettre ${letter}`)
         missCount += 1
         penduImg.src = `images/${missCount}.png`
+        if (missCount >= 9) {
+            gameOver = true
+            secretWordElem.textContent = some_word
+            secretWordElem.style.color = "red"
+            secretWordElem.textContent = "🙈🙅 " + secretWordElem.textContent + " 🤦👎"
+        }
         return
     }
+
     console.log(letter)
     revealLetter(letter)
     if (secretWordElem.textContent === some_word) {
+        gameOver = true
         secretWordElem.style.color = "yellowgreen"
         secretWordElem.textContent = "👏✌ " + secretWordElem.textContent + " 👍👏"
+        penduImg.src = "images/win.png"
     }
-
 }
 
 const foundElements = document.querySelectorAll(".letter-key")
